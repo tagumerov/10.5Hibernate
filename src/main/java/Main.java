@@ -16,11 +16,17 @@ public class Main {
         Session session = sessionFactory.openSession();
 
         SimpleDateFormat formatRegistrationDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Student student = session.get(Student.class, 1);
-        System.out.println("Имя студента: " + student.getName());
-        System.out.println("Возраст: " + student.getAge());
-        System.out.println("Дата регистрации: " + student.getRegistrationDate());
-        System.out.println(formatRegistrationDate.format(student.getRegistrationDate()));
+        //Student student = session.get(Student.class, 1);
+        Course course = session.get(Course.class, 2);
+//        System.out.println("Имя студента: " + student.getName());
+//        System.out.println("Возраст: " + student.getAge());
+//        System.out.println("Дата регистрации: " + student.getRegistrationDate());
+//        System.out.println(formatRegistrationDate.format(student.getRegistrationDate()));
+        System.out.println(course.getStudents().size());
+        for(Student student : course.getStudents())
+        {
+            System.out.println(student.getName());
+        }
         sessionFactory.close();
 
     }
